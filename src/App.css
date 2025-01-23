@@ -1,0 +1,180 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: #ffcbdb;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.title {
+  margin-top:10rem;
+  margin-bottom: -10rem;
+  font-size: 60px;
+  font-weight: bold; /* Letras más gruesas */
+  letter-spacing: 2px; /* Espaciado entre letras */
+  color: white; /* Color de las letras */
+  -webkit-text-stroke: 1px pink; /* Borde rosado */
+  text-shadow: 0 0 5px rgb(121, 121, 121); /* Efecto de brillo (opcional) */
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+}
+.chayanne{
+  position: fixed;
+  bottom: 0px; /* Espaciado desde el borde inferior */
+  left: 20px;  /* Espaciado desde el borde izquierdo */
+  height: auto; /* Mantiene la proporción */
+  z-index: 100; /* Asegura que esté por encima de otros elementos */
+}
+.card {
+  width: 250px;
+  height: 300px;
+  background: #cacaca;
+  border: 2px solid #ae31b3;
+  border-radius: 10px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card .front,
+.card .back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold; /* Letras más gruesas */
+  letter-spacing: 2px; /* Espaciado entre letras */
+  color: white; /* Color de las letras */
+  -webkit-text-stroke: 1px pink; /* Borde rosado */
+  text-shadow: 0 0 5px rgb(0, 0, 0); /* Efecto de brillo (opcional) */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.6s ease;
+}
+
+.card .front {
+  background: #ebb2d8;
+}
+
+.card .back {
+  background: #dbdbdb;
+  transform: rotateY(180deg);
+}
+
+.card.open .front {
+  transform: rotateY(180deg);
+}
+
+.card.open .back {
+  transform: rotateY(0deg);
+}
+
+/* Modal styles */
+#modal-container {
+  position: fixed;
+  display: none;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
+  animation: unfoldOut 0.8s forwards;
+}
+
+#modal-container.active {
+  display: flex;
+  transform: scale(1);
+  animation: unfoldIn 0.8s forwards;
+}
+
+.modal-background {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  animation: zoomIn 0.5s ease-out forwards;
+}
+
+.modal-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+}
+
+button {
+  padding: 10px 20px;
+  background: pink;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes unfoldIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes unfoldOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+}
